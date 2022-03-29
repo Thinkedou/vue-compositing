@@ -3,13 +3,15 @@
         <div class="courses-container">
             <div class="course">
                 <div class="course-preview">
-                        <h6>Course</h6>
-                        <h2>JavaScript Fundamentals</h2>
+                    <slot>
+                        <h6>Course par défaut ({{cardId}})</h6>
+                        <h2>H2 du Slot Par défaut</h2>
+                    </slot>
                 </div>
                 <div class="course-info">
                     <h6>Chapter {{chapNumber}}</h6>
                     <h2>{{chapterTitle}}</h2>
-                    <button class="btn">Continue</button>
+                    <button class="btn" @click="selectCourse">Continue</button>
                 </div>
             </div>
         </div>
@@ -28,13 +30,18 @@ export default {
        chapNumber:{
            type:Number,
            default:0
+       },
+       cardId:{
+           type:Number
        }
   },
   data:()=>({
 
   }),
   methods:{
-      
+      selectCourse(){
+          console.log('ça click sur ', this.cardId)
+      }
   }
 }
 </script>

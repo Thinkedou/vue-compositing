@@ -10,9 +10,16 @@
             <div class='col right'>
               <CciCard v-for='(cours,idx) in coursesInfos'
                     :key='idx'
+                    :card-id='idx'
                     :chapter-title="cours.chapter"
                     :chap-number="cours.chapterNumber"
               />
+
+              <CciCard >
+                  <h2>JavaScript Fundamentals</h2>
+                  <img src='https://www.dotcom-monitor.com/blog/wp-content/uploads/sites/3/2020/05/Vue-logo-1.png' />
+              </CciCard>
+
             </div>
       </div>
   </div>
