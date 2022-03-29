@@ -11,8 +11,6 @@
               <CciCard />
             </div>
       </div>
-
-
   </div>
 </template>
 

@@ -85,37 +85,7 @@ export default {
 	width: 100%;
 }
 
-.progress-container {
-	position: absolute;
-	top: 30px;
-	right: 30px;
-	text-align: right;
-	width: 150px;
-}
 
-.progress {
-	background-color: #ddd;
-	border-radius: 3px;
-	height: 5px;
-	width: 100%;
-}
-
-.progress::after {
-	border-radius: 3px;
-	background-color: #2A265F;
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 5px;
-	width: 66%;
-}
-
-.progress-text {
-	font-size: 10px;
-	opacity: 0.6;
-	letter-spacing: 1px;
-}
 
 .btn {
 	background-color: #2A265F;
