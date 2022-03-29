@@ -5,6 +5,7 @@
                 <ul>
                     <li>Ici c'est App.vue</li>
                     <li>Parent (nav, button, etc)</li>
+                    <li>{{selectedCourse}}</li>
                 </ul>
             </div>
             <div class='col right'>
@@ -13,6 +14,7 @@
                     :card-id='idx'
                     :chapter-title="cours.chapter"
                     :chap-number="cours.chapterNumber"
+                    @onCourseSelected="handleCourseSelected"
               />
 
               <CciCard >
@@ -34,6 +36,7 @@ export default {
     CciCard
     },
    data:()=>({
+       selectedCourse:'',
        coursesInfos:[
            {
                chapter:'Premier cours',
@@ -48,7 +51,17 @@ export default {
                chapterNumber:4
            }
        ]
-   })
+   }),
+   methods:{
+       handleCourseSelected(payload){
+            console.log('%c APP Parent à entendue un evenement depuis Enfant!', 'background: green; color: white; display: block;');
+            console.log(payload)
+            // object destructuring car pourquoi pas?
+            const {cardId}= payload
+            // je met à jour la data locale "selectedCourse"
+            this.selectedCourse = this.coursesInfos[cardId].chapter
+       }
+   }
 }
 </script>
 
@@ -74,6 +87,7 @@ export default {
 }
 .left{
     width:20%;
+    font-size: 24px;
     background-color: #065a75;
 }
 .right{

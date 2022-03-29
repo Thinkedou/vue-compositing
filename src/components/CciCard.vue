@@ -40,7 +40,10 @@ export default {
   }),
   methods:{
       selectCourse(){
-          console.log('ça click sur ', this.cardId)
+          console.log('ça click depuis CciCard ', this.cardId)
+          // on déclenche un événément custom
+          // son nom est arbitraire et ne correspond pas aux évt Js classiques
+          this.$emit('onCourseSelected',{cardId:this.cardId})
       }
   }
 }
