@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+   <div id="app"> <!-- app est notre parent dans cette composition  -->
       <div class='row'>
             <div class='col left'>
                 <ul>
@@ -8,7 +8,11 @@
                 </ul>
             </div>
             <div class='col right'>
-              <CciCard />
+              <CciCard v-for='(cours,idx) in coursesInfos'
+                    :key='idx'
+                    :chapter-title="cours.chapter"
+                    :chap-number="cours.chapterNumber"
+              />
             </div>
       </div>
   </div>
@@ -21,7 +25,23 @@ export default {
   name: 'App',
   components: {
     CciCard
-  }
+    },
+   data:()=>({
+       coursesInfos:[
+           {
+               chapter:'Premier cours',
+               chapterNumber:2
+           },
+           {
+               chapter:'Quatrième cours',
+               chapterNumber:3
+           },
+           {
+               chapter:'Dernier cours',
+               chapterNumber:4
+           }
+       ]
+   })
 }
 </script>
 

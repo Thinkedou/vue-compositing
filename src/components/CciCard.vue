@@ -7,14 +7,13 @@
                         <h2>JavaScript Fundamentals</h2>
                 </div>
                 <div class="course-info">
-                    <h6>Chapter X</h6>
-                    <h2>Nom du chapitre</h2>
+                    <h6>Chapter {{chapNumber}}</h6>
+                    <h2>{{chapterTitle}}</h2>
                     <button class="btn">Continue</button>
                 </div>
             </div>
         </div>
     </div>
-
 
 </template>
 
@@ -22,7 +21,20 @@
 export default {
   name: 'CciCard',
   props: {
+       chapterTitle:{
+           type:String,
+           default:'Chapitre par défaut'
+       },
+       chapNumber:{
+           type:Number,
+           default:0
+       }
+  },
+  data:()=>({
 
+  }),
+  methods:{
+      
   }
 }
 </script>
