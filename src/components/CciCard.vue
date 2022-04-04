@@ -2,7 +2,7 @@
     <div>
         <div class="courses-container">
             <div class="course">
-                <div class="course-preview">
+                <div class="course-preview" :style="{backgroundColor:cardColor}">
                     <slot>
                         <h6>Course par défaut ({{cardId}})</h6>
                         <h2>H2 du Slot Par défaut</h2>
@@ -33,10 +33,13 @@ export default {
        },
        cardId:{
            type:Number
+       },
+       cardColor:{
+           type:String,
+           default : '#15EB0F'
        }
   },
   data:()=>({
-
   }),
   methods:{
       selectCourse(){
@@ -86,7 +89,6 @@ export default {
 }
 
 .course-preview {
-	background-color: #2A265F;
 	color: #fff;
 	padding: 30px;
 	max-width: 250px;

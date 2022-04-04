@@ -13,13 +13,17 @@
                     :key='idx'
                     :card-id='idx'
                     :chapter-title="cours.chapter"
+                    :card-color="cours.color"
                     :chap-number="cours.chapterNumber"
                     @onCourseSelected="handleCourseSelected"
               />
 
-              <CciCard >
-                  <h2>JavaScript Fundamentals</h2>
-                  <img src='https://www.dotcom-monitor.com/blog/wp-content/uploads/sites/3/2020/05/Vue-logo-1.png' />
+              <CciCard
+                chapter-title='Un chapitre en dur'
+                chap-number = '4'
+                card-color='cyan'
+                >
+
               </CciCard>
 
             </div>
@@ -40,15 +44,18 @@ export default {
        coursesInfos:[
            {
                chapter:'Premier cours',
-               chapterNumber:2
+               chapterNumber:2,
+               color:'lime'
            },
            {
                chapter:'Quatrième cours',
-               chapterNumber:3
+               chapterNumber:3,
+               color:'#EBE60E'
            },
            {
                chapter:'Dernier cours',
-               chapterNumber:4
+               chapterNumber:4,
+               color:'#ED6FF5'
            }
        ]
    }),
