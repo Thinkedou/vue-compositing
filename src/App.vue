@@ -28,6 +28,7 @@
 
         <CciCard
           v-for='(course,id) in coursesInfos'
+          
           :key = 'id'
           :cardId='id'
           :chapterTitle='course.chapter'
