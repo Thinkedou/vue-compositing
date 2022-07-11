@@ -6,21 +6,22 @@
         <ul>
           <li>Ici c'est App.vue</li>
           <li>Parent (nav, button, etc)</li>
-          <li 
+          <li
             v-for="cardId in selectedCourse"
             :key='cardId'
           >
           {{coursesInfos[cardId].chapter}}
           </li>
+          <li>une modif pour git</li>
         </ul>
-        <CciImage 
+        <CciImage
         imgLegend="Kramer l'unique"
         imgSrc="https://m.media-amazon.com/images/M/MV5BY2U4NzRmNmMtNGQ4OC00OTdmLTg0YTAtMGNiODc2OTExYWVkXkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_UY98_CR32,0,67,98_AL_.jpg" />
-        <CciImage 
+        <CciImage
         imgLegend="Hughie"
         imgSrc="https://www.slashfilm.com/img/gallery/the-big-difference-between-hughies-powers-in-the-boys-show-and-comic-explained/l-intro-1654979525.jpg" />
         <CciImage
-        imgLegend="Nkm moment de grace" 
+        imgLegend="Nkm moment de grace"
         imgSrc="https://media.nouvelobs.com/referentiel/1200x630/6650943.jpg" />
 
       </div>
@@ -28,7 +29,7 @@
 
         <CciCard
           v-for='(course,id) in coursesInfos'
-          
+
           :key = 'id'
           :cardId='id'
           :chapterTitle='course.chapter'
@@ -78,7 +79,7 @@ export default {
   methods: {
     handleCourseSelected(datas){
       const {cardId} = datas
-      // je regarde d'abord s'il n'est pas déjà dans la liste 
+      // je regarde d'abord s'il n'est pas déjà dans la liste
       if(!this.selectedCourse.includes(cardId)){
         this.selectedCourse.push(cardId)
       }
