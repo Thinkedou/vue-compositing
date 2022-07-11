@@ -6,35 +6,56 @@
         <ul>
           <li>Ici c'est App.vue</li>
           <li>Parent (nav, button, etc)</li>
-          <li></li>
+          <li 
+            v-for="cardId in selectedCourse"
+            :key='cardId'
+          >
+          {{coursesInfos[cardId].chapter}}
+          </li>
         </ul>
+        <CciImage 
+        imgLegend="Kramer l'unique"
+        imgSrc="https://m.media-amazon.com/images/M/MV5BY2U4NzRmNmMtNGQ4OC00OTdmLTg0YTAtMGNiODc2OTExYWVkXkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_UY98_CR32,0,67,98_AL_.jpg" />
+        <CciImage 
+        imgLegend="Hughie"
+        imgSrc="https://www.slashfilm.com/img/gallery/the-big-difference-between-hughies-powers-in-the-boys-show-and-comic-explained/l-intro-1654979525.jpg" />
+        <CciImage
+        imgLegend="Nkm moment de grace" 
+        imgSrc="https://media.nouvelobs.com/referentiel/1200x630/6650943.jpg" />
+
       </div>
       <div class="col right">
-        <div>
-          <div class="courses-container">
-            <div class="course">
-              <div class="course-preview">
-                <h6>Nom du cours</h6>
-              </div>
-              <div class="course-info">
-                <h6>Chapter 2</h6>
-                <h2>Title</h2>
-                <button class="btn">Select</button>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <CciCard
+          v-for='(course,id) in coursesInfos'
+          :key = 'id'
+          :cardId='id'
+          :chapterTitle='course.chapter'
+          :courseTitle='course.chapterNumber'
+          :cardColor = 'course.color'
+          @onCourseSelected="handleCourseSelected"
+        />
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
+//1° import du component
+import CciCard  from './components/CciCard.vue'
+import CciImage from './components/CciImage.vue';
+
+
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    CciCard,
+    CciImage
+  },
   data: () => ({
-    selectedCourse: "",
+    selectedCourse: [],
     coursesInfos: [
       {
         chapter: "Premier cours",
@@ -53,7 +74,17 @@ export default {
       },
     ],
   }),
-  methods: {},
+  methods: {
+    handleCourseSelected(datas){
+      const {cardId} = datas
+      // je regarde d'abord s'il n'est pas déjà dans la liste 
+      if(!this.selectedCourse.includes(cardId)){
+        this.selectedCourse.push(cardId)
+      }
+
+      console.log('👨 événément entendu par le parent:', datas)
+    }
+  },
 };
 </script>
 
@@ -84,71 +115,4 @@ export default {
   width: 70%;
 }
 
-.courses-container {
-  font-family: "Muli", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  flex-direction: column;
-}
-
-.course {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  max-width: 100%;
-  margin: 20px;
-  overflow: hidden;
-  width: 700px;
-}
-
-.course h6 {
-  opacity: 0.6;
-  margin: 0;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.course h2 {
-  letter-spacing: 1px;
-  margin: 10px 0;
-}
-
-.course-preview {
-  color: #fff;
-  padding: 30px;
-  background-color: #2a265f;
-  max-width: 250px;
-}
-
-.course-preview a {
-  color: #fff;
-  display: inline-block;
-  font-size: 12px;
-  opacity: 0.6;
-  margin-top: 30px;
-  text-decoration: none;
-}
-
-.course-info {
-  padding: 30px;
-  position: relative;
-  width: 100%;
-}
-
-.btn {
-  background-color: #2a265f;
-  border: 0;
-  border-radius: 10px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 16px;
-  padding: 12px 25px;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  letter-spacing: 1px;
-}
 </style>
